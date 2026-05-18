@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) <= 1:
         print("Usage: python plants_recognition.py <plant_name> [<plant_name> ...]")
-        raise SystemExit(1)
+        sys.exit(1)
 
     results = recognize_plants(sys.argv[1:])
     for plant, category in results.items():
