@@ -35,10 +35,16 @@ def recognize_plant(name: str) -> str:
     if not normalized:
         return "unknown"
 
-    if any(keyword in normalized for keyword in TREE_KEYWORDS):
+    has_tree_keyword = any(keyword in normalized for keyword in TREE_KEYWORDS)
+    has_flower_keyword = any(keyword in normalized for keyword in FLOWER_KEYWORDS)
+
+    if has_tree_keyword and has_flower_keyword:
+        return "unknown"
+
+    if has_tree_keyword:
         return "tree"
 
-    if any(keyword in normalized for keyword in FLOWER_KEYWORDS):
+    if has_flower_keyword:
         return "flower"
 
     return "unknown"
